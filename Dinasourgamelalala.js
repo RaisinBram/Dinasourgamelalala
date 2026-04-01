@@ -8,4 +8,11 @@ export default class Game {
         console.log("running the game")
         //this.frame()
     }
+
+    frame() {
+        this.ctx.clearRect(0, 0, 800, 600) 
+        this.ctx.font = "30px times new roman"
+        this.ctx.fillStyle = rgba 
+        window.requestAnimationFrame(this.frame.bind(this))
+    }
 }
