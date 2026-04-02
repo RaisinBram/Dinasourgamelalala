@@ -1,7 +1,10 @@
+import { Dino } from './Dino.js'
+
 export default class Game {
     constructor() {
         const canvas = document.getElementById("myCanvas")
         this.ctx = canvas.getContext("2d")
+        this.Dino = new Dino ()
     }
 
     run() {

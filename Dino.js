@@ -1,0 +1,4 @@
+export class Dino { 
+    constructor() 
+{}
+}
