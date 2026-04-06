@@ -14,12 +14,17 @@ export default class Game {
 
     frame() {
         this.ctx.clearRect(0, 0, 800, 600) 
+
+
+        this.ctx.beginPath()
+        this.ctx.moveTo(10,200)
+        this.ctx.lineTo(780,200)
+        this.ctx.stroke()
+
+
         this.Dino.draw(this.ctx)
 
-
-        //this.ctx.font = "30px times new roman"
-        //this.ctx.fillStyle = rgba 
-
+        
         window.requestAnimationFrame(this.frame.bind(this))
     }
 }
