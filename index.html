@@ -2,14 +2,24 @@
 <html>
 
 <head>
-    <script type="text/javascript" src= "Dinasourgamelalala.js"></script>
+    <script type="module" src="Dinasourgamelalala.js"></script>
+    <script type="module">
+        import Game from './Dinasourgamelalala.js'
+        function runGame() {
+            var Dinasourgamelalala = new Game ()
+            Dinasourgamelalala.run()
+        }
+    
+    document.addEventListener('DOMContentLoaded', runGame)
+    </script>
+
 </head>
-<body onload="Dinogame()">
+<body>
 
 <h1>Fear me, for I have come face to face with hades himself and lived.</h1>
 
 <!-- 1. The <canvas> element is the container -->
-<canvas id="myCanvas" width="600" height="400" style="border:1px solid #000000;">
+<canvas id="myCanvas" width="800" height="600" style="border:1px solid #000000;">
     <!-- Fallback content for unsupported browsers -->
     Your browser does not support the HTML canvas element.
 </canvas>
