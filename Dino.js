@@ -12,7 +12,12 @@ export class Dino {
 
     keydown(event) {
         console.log("key pressed", event)
+        event.preventDefault()
+
+
         this.dy += -10
+
+        this.sprite = { x: 49, y: 416, w: 120, h: 129}
     }
      
     draw(ctx) {
@@ -37,3 +42,6 @@ export class Dino {
     
     }
 }
+
+
+//Dino Cords 677,2
