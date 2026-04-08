@@ -7,6 +7,8 @@ export class Dino {
         this.sprite_sheet = new Image()
         this.sprite_sheet.src = 'dino_sprite.png'
 
+        this.sprite = { x: 49, y: 416, w: 120, h: 129}
+
         document.addEventListener("keydown", this.keydown.bind (this))
     }
 
@@ -17,13 +19,15 @@ export class Dino {
 
         this.dy += -10
 
-        this.sprite = { x: 49, y: 416, w: 120, h: 129}
     }
      
     draw(ctx) {
+        //draw dino sprite
         ctx.drawImage(this.sprite_sheet,
-            
-            this.x, this.y
+            this.sprite.x, this.sprite.y,
+            this.sprite.w, this.sprite.h,
+            this.x,        this.y,
+            this.sprite.w, this.sprite.h
         )
      
            ctx.fillStyle = "rbg(255, 145, 0)"
