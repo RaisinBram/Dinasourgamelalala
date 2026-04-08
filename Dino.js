@@ -4,6 +4,9 @@ export class Dino {
         this.y = 100
         this.dy = 0
 
+        this.sprite_sheet = new Image()
+        this.sprite_sheet.src = 'dino_sprite.png'
+
         document.addEventListener("keydown", this.keydown.bind (this))
     }
 
@@ -13,6 +16,11 @@ export class Dino {
     }
      
     draw(ctx) {
+        ctx.drawImage(this.sprite_sheet,
+            
+            this.x, this.y
+        )
+     
            ctx.fillStyle = "rbg(255, 145, 0)"
            ctx.beginPath()
            ctx.arc(this.x, this.y, 10, 0, Math.PI * 2)
