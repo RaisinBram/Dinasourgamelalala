@@ -1,10 +1,14 @@
 import { Dino } from './Dino.js'
+import { Cacti } from './Cacti.js'
 
 export default class Game {
     constructor() {
         const canvas = document.getElementById("myCanvas")
         this.ctx = canvas.getContext("2d")
         this.Dino = new Dino ()
+        this.cacti = new Cacti()
+
+    
     }
 
     run() {
