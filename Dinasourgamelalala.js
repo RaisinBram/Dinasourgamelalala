@@ -1,4 +1,5 @@
 import { Dino } from './Dino.js'
+import { Cacti } from './Cacti.js'
 import { Bird } from './bird.js'
 
 
@@ -9,10 +10,9 @@ export default class Game {
 
         //Create a dino object
         this.Dino = new Dino ()
-        //create obstacles
-        this.bird = new this.bird(          // player" 1
-        this.cactus = new this.cactus()     //"player" 2
-        )
+        this.cacti = new Cacti()
+        this.bird = new Bird ()
+    
     }
 
     run() {
