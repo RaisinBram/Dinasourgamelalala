@@ -1,9 +1,10 @@
 export class Dino {
-    constructor() {
+    constructor(game) {
         //Create the positional and movement variables
         this.x = 100
         this.y = 100
         this.dy = 0
+        this.game = game
 
 
         document.addEventListener("keydown", this.keydown.bind(this))
