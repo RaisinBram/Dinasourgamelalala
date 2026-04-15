@@ -8,10 +8,22 @@ export default class Game {
         const canvas = document.getElementById("myCanvas")
         this.ctx = canvas.getContext("2d")
 
+                this.sprite_sheet = new Image()
+        this.sprite_sheet.src = 'dino_sprite.png'
+
+        this.sprites = {
+            "standing": { x: 677, y: 2, w: 44, h: 47 },
+            "walking1": { x: 765, y: 2, w: 44, h: 47 },
+            "walking2": { x: 809, y: 2, w: 44, h: 47 },
+            "bird flap down": { x: 1048, y: 2, w: 241, h: -45 },
+            "bird flap up": { x: 1241, y: 2, w: 195, h: 5},
+        }
+
         //Create a dino object
-        this.Dino = new Dino ()
-        this.cacti = new Cacti()
-        this.bird = new Bird ()
+        //writing this- gives it object to be in game
+        this.Dino = new Dino (this)
+        this.cacti = new Cacti(this)
+        this.bird = new Bird (this)
     
     }
 
