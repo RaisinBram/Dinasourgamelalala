@@ -1,13 +1,22 @@
 import { Dino } from './Dino.js'
+import { Bird } from './bird.js'
+
 
 export default class Game {
     constructor() {
         const canvas = document.getElementById("myCanvas")
         this.ctx = canvas.getContext("2d")
+
+        //Create a dino object
         this.Dino = new Dino ()
+        //create obstacles
+        this.bird = new this.bird(          // player" 1
+        this.cactus = new this.cactus()     //"player" 2
+        )
     }
 
     run() {
+        //Start animating
         console.log("running the game")
         this.frame()
     }
