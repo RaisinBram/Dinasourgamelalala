@@ -18,7 +18,7 @@ export default class Game {
             "bird flap down": { x: 130, y: 7, w: 47, h: 35, cx: 14, cy: 10 },
             "bird flap up": { x: 176, y: 1, w: 47, h: 50, cx: 14, cy: 16 },
             "cacti1": {x: 326, y: 1, w: 25, h: 50, cx: 12, cy: 48},
-            "cacti2": {x: 351, y: 1, w: 24, h: 50, cx: 12, cy: 48}, 
+            "cacti2": {x: 351, y: 1, w: 24.5, h: 50, cx: 12, cy: 48}, 
 
         }
 
