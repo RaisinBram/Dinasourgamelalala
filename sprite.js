@@ -1,13 +1,13 @@
 export class Sprite {
     constructor (game) {
         this.game = game
-        this.current_sprite = "cactus1"
+        this.current_sprite = "cacti1"
         this.scale = 1.5      
      } 
 
     draw(ctx) {
         //draw Cacti sprite
-        var sprite = this.game.sprites[current_sprite]
+        var sprite = this.game.sprites[this.current_sprite]
         ctx.drawImage(this.game.sprite_sheet,
             sprite.x, sprite.y,
             sprite.w, sprite.h,

@@ -1,6 +1,6 @@
-import {sprite} from './sprite.js'
+import {Sprite} from './sprite.js'
 
-export class Cacti {
+export class Cacti extends Sprite {
     constructor (game) {
         super(game)
          this.x = 400         //right side of 
@@ -9,5 +9,8 @@ export class Cacti {
          this.current_sprite = "cacti1"
     } 
 
+    animate() {
+            this.x -= 1
+    }
 
 }
