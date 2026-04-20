@@ -16,7 +16,10 @@ export default class Game {
             "walking1": { x: 765, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
             "walking2": { x: 809, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
             "bird flap down": { x: 130, y: 7, w: 47, h: 35, cx: 14, cy: 10 },
-            "bird flap up": { x: 176, y: 1, w: 47, h: 50, cx: 14, cy: 16 }
+            "bird flap up": { x: 176, y: 1, w: 47, h: 50, cx: 14, cy: 16 },
+            "cacti1": {x: 326, y: 1, w: 25, h: 50, cx: 12, cy: 48},
+            "cacti2": {x: 351, y: 1, w: 24, h: 50, cx: 12, cy: 48}, 
+
         }
 
         //Create a dino object

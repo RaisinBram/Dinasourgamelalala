@@ -9,8 +9,8 @@ export class Cacti extends Sprite {
          this.current_sprite = "cacti1"
     } 
 
-    animate() {
-            this.x -= 1
-    }
+animate() {
+    this.x -= 1
+}
 
 }
