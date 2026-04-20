@@ -29,9 +29,9 @@ export class Dino {
         //draw dino sprite
 
         var current_sprite = "walking1"
-        var sprite = this.sprites[current_sprite]
+        var sprite = this.game.sprites[current_sprite]
 
-        ctx.drawImage(this.sprite_sheet,
+        ctx.drawImage(this.game.sprite_sheet,
             sprite.x,
             sprite.y,
             sprite.w,

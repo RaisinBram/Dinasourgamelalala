@@ -12,16 +12,16 @@ export default class Game {
         this.sprite_sheet.src = 'dino_sprite.png'
 
         this.sprites = {
-            "standing": { x: 677, y: 2, w: 44, h: 47 },
-            "walking1": { x: 765, y: 2, w: 44, h: 47 },
-            "walking2": { x: 809, y: 2, w: 44, h: 47 },
-            "bird flap down": { x: 1048, y: 2, w: 241, h: -45 },
-            "bird flap up": { x: 1241, y: 2, w: 195, h: 5},
+            "standing": { x: 677, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
+            "walking1": { x: 765, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
+            "walking2": { x: 809, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
+            "bird flap down": { x: 130, y: 7, w: 47, h: 35, cx: 14, cy: 10 },
+            "bird flap up": { x: 176, y: 1, w: 47, h: 50, cx: 14, cy: 16 }
         }
 
         //Create a dino object
         //writing this- gives it object to be in game
-        this.Dino = new Dino (this)
+        this.dino = new Dino (this)
         this.cacti = new Cacti(this)
         this.bird = new Bird (this)
     
@@ -43,8 +43,8 @@ export default class Game {
         this.ctx.stroke()
 
 
-        this.Dino.draw(this.ctx)
-        this.Cacti.draw(this.ctx)
+        this.dino.draw(this.ctx)
+        this.cacti.draw(this.ctx)
         this.bird.draw(this.ctx)
 
         
