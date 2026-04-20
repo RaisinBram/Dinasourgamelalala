@@ -45,11 +45,12 @@ export default class Game {
         this.ctx.lineTo(780,200)
         this.ctx.stroke()
 
-
+        // Tell the dinosaur object to draw
         this.dino.draw(this.ctx)
         this.cacti.draw(this.ctx)
         this.bird.draw(this.ctx)
 
+        this.cactus.animate()
         
         window.requestAnimationFrame(this.frame.bind(this))
     }
