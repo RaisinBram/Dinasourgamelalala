@@ -1,6 +1,6 @@
 export class Cacti {
     constructor (game) {
-         this.x = 600         //right side of 
+         this.x = 400         //right side of 
          this.y = 200         //floor level
          this.game = game
     } 
@@ -9,7 +9,10 @@ export class Cacti {
         this.scale = 1.5
         //draw Cacti sprite
 
-        ctx.drawImage(this.sprite_sheet,
+        var current_sprite = "bird flap up"
+        var sprite = this.game.sprites[current_sprite]
+
+        ctx.drawImage(this.game.sprite_sheet,
             sprite.x,
             sprite.y,
             sprite.w,

@@ -1,4 +1,4 @@
-export class bird {
+export class Bird {
     constructor(game) {
         this.game = game
         this.x =  600             //right side of
@@ -8,7 +8,7 @@ export class bird {
         this.scale = 1.5
         //draw bird sprite
 
-        var current_sprite = "bird.js"
+        var current_sprite = "bird flap up"
         var sprite = this.game.sprites[current_sprite]
 
         ctx.drawImage(this.game.sprite_sheet,
@@ -17,8 +17,8 @@ export class bird {
             sprite.w,
             sprite.h,
             //destination corner - upper left
-            this.x - sprite.w * this.scale / 2,
-            this.y - sprite.h * this.scale,
+            this.x - sprite.cx * this.scale / 2,
+            this.y - sprite.cy * this.scale,
             //destination scale
             sprite.w * this.scale,
             sprite.h * this.scale
