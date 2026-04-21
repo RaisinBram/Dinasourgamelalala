@@ -1,27 +1,29 @@
-export class Bird {
+import {Sprite} from './sprite.js'
+
+export class Bird extends Sprite {
     constructor(game) {
-        this.game = game
-        this.x =  600             //right side of
+        super(game)
+        this.x = 600             //right side of
         this.y =  200           //floor level
+
+        this.current_sprite = "bird1"
+        this.set_sprite(this.current_sprite)
+        this.flap_counter = 10
     }
-     draw(ctx) {
-        this.scale = 1.5
-        //draw bird sprite
 
-        var current_sprite = "bird flap up"
-        var sprite = this.game.sprites[current_sprite]
+    animate() {
+        this.x -= 1
 
-        ctx.drawImage(this.game.sprite_sheet,
-            sprite.x,
-            sprite.y,
-            sprite.w,
-            sprite.h,
-            //destination corner - upper left
-            this.x - sprite.cx * this.scale / 2,
-            this.y - sprite.cy * this.scale,
-            //destination scale
-            sprite.w * this.scale,
-            sprite.h * this.scale
-        )
+        this.flap_counter -= 1 
+        if (this.flap_counter == 0) {
+            this.flap_counter = 10
+            if (this.current_sprite == "bird1") {
+                this.current_sprite = "bird2"
+             } else {
+                this.current_sprite = "bird1"
+             }
+        }
+
+        this.set_sprite(this.current_sprite)
     }
 }

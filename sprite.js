@@ -7,20 +7,29 @@ export class Sprite {
      } 
 
     set_sprite(sprite_name) {
-        this.sprite = this.game.sprites[this.current_sprite]
+        this.sprite = this.game.sprites[sprite_name]
     }
 
     draw(ctx) {
          ctx.drawImage(this.game.sprite_sheet,
-            this.sprite.x, sprite.y,
-            this.sprite.w, sprite.h,
+            this.sprite.x, this.sprite.y,
+            this.sprite.w, this.sprite.h,
             //destination corner - upper right
-            this.x - sprite.cx * this.scale,
-            this.y - sprite.cy * this.scale,
+            this.x - this.sprite.cx * this.scale,
+            this.y - this.sprite.cy * this.scale,
             //destination scale
             this.sprite.w * this.scale,
             this.sprite.h * this.scale
          )
 
+    }
+
+    get_bounds() {
+        return {
+             x: this.x - this.sprite.cx * this.scale,
+             y: this.y - this.sprite.cy * this.scale,
+             w:this.sprite.w * this.scale,
+             h:this.sprite.h * this.scale
+        
     }
 }

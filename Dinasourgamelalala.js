@@ -15,8 +15,8 @@ export default class Game {
             "standing": { x: 677, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
             "walking1": { x: 765, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
             "walking2": { x: 809, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
-            "bird flap down": { x: 130, y: 7, w: 47, h: 35, cx: 14, cy: 10 },
-            "bird flap up": { x: 176, y: 1, w: 47, h: 50, cx: 14, cy: 16 },
+            "bird1": { x: 130, y: 7, w: 47, h: 35, cx: 14, cy: 10 },
+            "bird2": { x: 176, y: 1, w: 47, h: 50, cx: 14, cy: 16 },
             "cacti1": {x: 326, y: 1, w: 25, h: 50, cx: 12, cy: 48},
             "cacti2": {x: 351, y: 1, w: 24.5, h: 50, cx: 12, cy: 48}, 
 
@@ -51,6 +51,7 @@ export default class Game {
         this.bird.draw(this.ctx)
 
         this.cacti.animate()
+        this.bird.animate()
         
         window.requestAnimationFrame(this.frame.bind(this))
     }
