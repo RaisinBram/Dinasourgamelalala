@@ -1,10 +1,13 @@
-export class Dino {
+import {Sprite} from './sprite.js'
+export class Dino extends Sprite {
     constructor(game) {
         //Create the positional and movement variables
+        super(game)
         this.x = 100
         this.y = 100
         this.dy = 0
-        this.game = game
+        this.set_sprite ("walking1")
+        
 
 
         document.addEventListener("keydown", this.keydown.bind(this))
@@ -24,26 +27,7 @@ export class Dino {
 
     }
 
-    draw(ctx) {
-        this.scale = 1.5
-        //draw dino sprite
-
-        var current_sprite = "walking1"
-        var sprite = this.game.sprites[current_sprite]
-
-        ctx.drawImage(this.game.sprite_sheet,
-            sprite.x,
-            sprite.y,
-            sprite.w,
-            sprite.h,
-            //destination corner - upper left
-            this.x - sprite.w * this.scale / 2,
-            this.y - sprite.h * this.scale,
-            //destination scale
-            sprite.w * this.scale,
-            sprite.h * this.scale
-        )
-
+    animate(ctx) {
         this.y += this.dy
         this.dy += 0.1
         if (this.y > 200) {

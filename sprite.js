@@ -1,7 +1,7 @@
 export class Sprite {
     constructor (game) {
         this.game = game
-        this.scale = 1.5      
+        this.scale = 0.5      
 
         this.set_sprite("cacti1")
      } 
@@ -34,4 +34,43 @@ export class Sprite {
     }
 }
 
-}
+collides_with (other) { 
+    // "this" is first sprite
+    // "other" os second sprite
+    bound_a = this.get_bounds()
+    bounds_b = other.get.bounds()
+
+    // If the left edge of A is between the left and right of B
+        if (
+            ( 
+            ( (bounds_b.x >= bounds_a.x)
+                &&
+              (bounds_b.x <= (bounds_a.x + bounds_a.w))
+            )       
+            ||
+            (   
+             ((bounds_b.x+bounds_b.w) >= bounds_a.x)
+                 &&
+              ((bounds_b.x + bounds_b.w) < (bounds_a.x + bounds_a.w))
+            )
+           )
+           &&
+           ( 
+            ( (bounds_b.x >= bounds_a.x)
+                &&
+              (bounds_b.y <= (bounds_a.x + bounds_a.h))
+            )       
+            ||
+            (   
+             ((bounds_b.y+bounds_b.h) >= bounds_a.y)
+                 &&
+              ((bounds_b.y + bounds_b.h) < (bounds_a.y + bounds_a.h))
+            )
+          )
+        )
+        {
+            return true
+        }
+         return false
+
+}  

@@ -9,17 +9,16 @@ export default class Game {
         this.ctx = canvas.getContext("2d")
 
                 this.sprite_sheet = new Image()
-        this.sprite_sheet.src = 'dino_sprite.png'
+        this.sprite_sheet.src = 'dinosprites.png'
 
         this.sprites = {
-            "standing": { x: 677, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
-            "walking1": { x: 765, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
-            "walking2": { x: 809, y: 2, w: 44, h: 47, cx: 0, cy: 0 },
-            "bird1": { x: 130, y: 7, w: 47, h: 35, cx: 14, cy: 10 },
-            "bird2": { x: 176, y: 1, w: 47, h: 50, cx: 14, cy: 16 },
-            "cacti1": {x: 326, y: 1, w: 25, h: 50, cx: 12, cy: 48},
-            "cacti2": {x: 351, y: 1, w: 24.5, h: 50, cx: 12, cy: 48}, 
-
+            "standing": { x: 1338, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
+            "walking1": { x: 1514, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
+            "walking2": { x: 1602, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
+            "bird1":    { x: 260, y: 14, w: 92, h: 68, cx: 28, cy: 20 },
+            "bird2":    { x: 352, y: 2  , w: 92, h: 68, cx: 28, cy: 32 },
+            "cacti1":   { x: 652, y: 2, w: 50, h: 100, cx: 24, cy: 96},
+            "cacti2":   { x: 702, y: 2, w: 48, h: 100, cx: 24, cy: 96},
         }
 
         //Create a dino object
@@ -52,7 +51,9 @@ export default class Game {
 
         this.cacti.animate()
         this.bird.animate()
+        this.dino.animate()
         
+        // Request that the browser 
         window.requestAnimationFrame(this.frame.bind(this))
     }
 }

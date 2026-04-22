@@ -6,7 +6,9 @@ export class Cacti extends Sprite {
          this.x = 600         //right side of 
          this.y = 200         //floor level
 
-         this.current_sprite = "cacti1"
+        
+
+         this.set_sprite  ("cacti1")
     } 
 
 animate() {
