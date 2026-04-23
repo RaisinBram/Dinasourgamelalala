@@ -53,6 +53,13 @@ export default class Game {
         this.bird.animate()
         this.dino.animate()
         
+        if(this.dino.collides_with(this.bird)) {
+            console.log("collides with bird")
+        }
+
+        if(this.dino.collides_with(this.cacti))
+            console.log ("collide")
+        
         // Request that the browser 
         window.requestAnimationFrame(this.frame.bind(this))
     }
