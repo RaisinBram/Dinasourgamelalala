@@ -2,31 +2,37 @@ import { Dino } from './Dino.js'
 import { Cacti } from './Cacti.js'
 import { Bird } from './bird.js'
 
+const PLAYING = "PLAYING"
+const LOST = "LOST"
+
 
 export default class Game {
     constructor() {
         const canvas = document.getElementById("myCanvas")
         this.ctx = canvas.getContext("2d")
 
-                this.sprite_sheet = new Image()
+        this.sprite_sheet = new Image()
         this.sprite_sheet.src = 'dinosprites.png'
 
         this.sprites = {
             "standing": { x: 1338, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
             "walking1": { x: 1514, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
             "walking2": { x: 1602, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
-            "bird1":    { x: 260, y: 14, w: 92, h: 68, cx: 28, cy: 20 },
-            "bird2":    { x: 352, y: 2  , w: 92, h: 68, cx: 28, cy: 32 },
-            "cacti1":   { x: 652, y: 2, w: 50, h: 100, cx: 24, cy: 96},
-            "cacti2":   { x: 702, y: 2, w: 48, h: 100, cx: 24, cy: 96},
+            "bird1": { x: 260, y: 14, w: 92, h: 68, cx: 28, cy: 20 },
+            "bird2": { x: 352, y: 2, w: 92, h: 68, cx: 28, cy: 32 },
+            "cacti1": { x: 652, y: 2, w: 50, h: 100, cx: 24, cy: 96 },
+            "cacti2": { x: 702, y: 2, w: 48, h: 100, cx: 24, cy: 96 },
         }
 
         //Create a dino object
         //writing this- gives it object to be in game
-        this.dino = new Dino (this)
+        this.dino = new Dino(this)
         this.cacti = new Cacti(this)
-        this.bird = new Bird (this)
-    
+        this.bird = new Bird(this)
+
+        //Set the game inital state
+        this.state = PLAYING
+
     }
 
     run() {
@@ -36,12 +42,12 @@ export default class Game {
     }
 
     frame() {
-        this.ctx.clearRect(0, 0, 800, 600) 
+        this.ctx.clearRect(0, 0, 800, 600)
 
 
         this.ctx.beginPath()
-        this.ctx.moveTo(10,200)
-        this.ctx.lineTo(780,200)
+        this.ctx.moveTo(10, 200)
+        this.ctx.lineTo(780, 200)
         this.ctx.stroke()
 
         // Tell the dinosaur object to draw
@@ -49,17 +55,25 @@ export default class Game {
         this.cacti.draw(this.ctx)
         this.bird.draw(this.ctx)
 
-        this.cacti.animate()
-        this.bird.animate()
-        this.dino.animate()
-        
-        if(this.dino.collides_with(this.bird)) {
-            console.log("collides with bird")
+        if (this.state == PLAYING) {
+            this.cacti.animate()
+            this.bird.animate()
+            this.dino.animate()
+        } else if (this.state == LOST) {
+            //show LOST message
         }
 
-        if(this.dino.collides_with(this.cacti))
-            console.log ("collide")
-        
+        if (this.dino.collides_with(this.bird)) {
+            console.log("collides with bird")
+            this.state = LOST
+        }
+
+        if (this.dino.collides_with(this.cacti)) {
+            console.log("collide")
+            this.state = LOST
+        }
+
+
         // Request that the browser 
         window.requestAnimationFrame(this.frame.bind(this))
     }
