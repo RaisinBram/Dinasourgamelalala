@@ -22,7 +22,7 @@ export class Dino extends Sprite {
 
         //set the vertical speed to "jump"
         if (this.y == 200) {
-            this.dy = -3
+            this.dy = -6
         }
 
     }
