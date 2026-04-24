@@ -1,6 +1,7 @@
 import { Dino } from './Dino.js'
 import { Cacti } from './Cacti.js'
 import { Bird } from './bird.js'
+import settings from './settings.js'
 
 const PLAYING = "PLAYING"
 const LOST = "LOST"
@@ -8,8 +9,8 @@ const LOST = "LOST"
 
 export default class Game {
     constructor() {
-        const canvas = document.getElementById("myCanvas")
-        this.ctx = canvas.getContext("2d")
+        this.canvas = document.getElementById("myCanvas")
+        this.ctx = this.canvas.getContext("2d")
 
         this.sprite_sheet = new Image()
         this.sprite_sheet.src = 'dinosprites.png'
@@ -46,8 +47,8 @@ export default class Game {
 
 
         this.ctx.beginPath()
-        this.ctx.moveTo(10, 200)
-        this.ctx.lineTo(780, 200)
+        this.ctx.moveTo(10, settings.floor_y)
+        this.ctx.lineTo(780, settings.floor_y)
         this.ctx.stroke()
 
         // Tell the dinosaur object to draw
@@ -60,7 +61,13 @@ export default class Game {
             this.bird.animate()
             this.dino.animate()
         } else if (this.state == LOST) {
-            //show LOST message
+            this.ctx.font = "60px times"
+            this.ctx.fillStyle = "black";
+            this.ctx.textAlign = "center";
+            this.ctx.textBaseline = "middle"
+            this.ctx.fillText("YOU LOST!",
+                this.canvas.width/2, this.canvas.height/2);
+
         }
 
         if (this.dino.collides_with(this.bird)) {

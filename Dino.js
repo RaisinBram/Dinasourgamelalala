@@ -1,13 +1,13 @@
 import {Sprite} from './sprite.js'
+import settings from './settings.js'
+
 export class Dino extends Sprite {
     constructor(game) {
-        //Create the positional and movement variables
         super(game)
+        //Create the positional and movement variables
         this.x = 100
-        this.y = 100
+        this.y = settings.floor_y
         this.dy = 0
-        this.set_sprite ("walking1")
-        
 
 
         document.addEventListener("keydown", this.keydown.bind(this))
@@ -22,22 +22,18 @@ export class Dino extends Sprite {
 
         //set the vertical speed to "jump"
         if (this.y == 200) {
-            this.dy = -6
+            this.dy = -3
         }
 
     }
 
-    animate(ctx) {
+    animate() {
         this.y += this.dy
         this.dy += 0.1
         if (this.y > 200) {
             this.dy = 0
             this.y = 200
         }
-
-
-
-
     }
 }
 

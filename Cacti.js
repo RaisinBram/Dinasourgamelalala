@@ -1,10 +1,11 @@
 import {Sprite} from './sprite.js'
+import settings from './settings.js'
 
 export class Cacti extends Sprite {
     constructor (game) {
         super(game)
          this.x = 600         //right side of 
-         this.y = 200         //floor level
+         this.y = settings.floor_y         //floor level
 
         
 
