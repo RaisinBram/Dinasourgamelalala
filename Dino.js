@@ -54,7 +54,8 @@ export class Dino extends Sprite {
             this.dy = 0
             this.y = settings.floor_y
         }
-
+        
+        if (this.state == WALKING) {
         this.walking_counter -= 1 
         if (this.walking_counter == 0) {
             if (this.current_sprite == "walking1") {
@@ -66,7 +67,7 @@ export class Dino extends Sprite {
              this.walking_counter = 20
         }
 
-        
+    }
     }
 }
 
