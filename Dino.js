@@ -1,6 +1,10 @@
 import {Sprite} from './sprite.js'
 import settings from './settings.js'
 
+const STANDING = "standing"
+const WLAKING = "walking"
+const CROUCHING = "crouching"
+
 export class Dino extends Sprite {
     constructor(game) {
         super(game)
@@ -8,7 +12,13 @@ export class Dino extends Sprite {
         this.x = 100
         this.y = settings.floor_y
         this.dy = 0
+        this.set_sprite ("standing")
 
+        this.set_state(WALKING)
+        
+        //this.current_sprite = "walking1"
+        //this.set_sprite (this.current_sprite)
+         //this.walking_counter = 10
 
         document.addEventListener("keydown", this.keydown.bind(this))
     }
@@ -20,20 +30,43 @@ export class Dino extends Sprite {
         console.log("key pressed", event)
         event.preventDefault()
 
-        //set the vertical speed to "jump"
-        if (this.y == 200) {
-            this.dy = -3
+        //set the vertical speed to "jump"https://classroom.google.com/u/0/h
+        if (this.y == settings.floor_y) {
+            this.dy = -settings.jump_dy
         }
 
     }
 
+    set_state(state) {
+        this.state = state
+        if (this.state == STANDING) {
+            this.current_sprite = "standing"
+        } else if (this.state == WALKING) {
+            this.current_sprite = "walking1"
+            this.walking_counter = 10 
+        }
+    }
+
     animate() {
         this.y += this.dy
-        this.dy += 0.1
-        if (this.y > 200) {
+        this.dy += settings.gravity_dy
+        if (this.y > settings.floor_y) {
             this.dy = 0
-            this.y = 200
+            this.y = settings.floor_y
         }
+
+        this.walking_counter -= 1 
+        if (this.walking_counter == 0) {
+            if (this.current_sprite == "walking1") {
+                this.current_sprite = "walking2"
+             } else {
+                this.current_sprite = "walking1"
+             }
+             this.set_sprite(this.current_sprite)
+             this.walking_counter = 20
+        }
+
+        
     }
 }
 

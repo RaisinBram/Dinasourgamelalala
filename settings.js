@@ -1,6 +1,6 @@
 const settings = {
     // Y height of the game floor
-    floor_y: 400, 
+    floor_y: 200, 
     //How strong is graity?
     gravity_dy: 0.025,
     // Dinosaur's initial vertical jump speed
@@ -10,7 +10,7 @@ const settings = {
     // How fast does the bird move right-to-left?
     bird_speed: 0.75,
     // How fast does the cactus move right-to-left?
-    cactus_speed: 0.75,
+    cactus_speed: 0.95,
 }
 
 export default settings;

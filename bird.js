@@ -13,7 +13,7 @@ export class Bird extends Sprite {
     }
 
     animate() {
-        this.x -= 1
+        this.x -= settings.bird_speed 
 
         this.flap_counter -= 1 
         if (this.flap_counter == 0) {

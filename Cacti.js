@@ -13,7 +13,7 @@ export class Cacti extends Sprite {
     } 
 
 animate() {
-    this.x -= 1
+    this.x -= settings.cactus_speed
 }
 
 }
