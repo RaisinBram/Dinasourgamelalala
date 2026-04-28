@@ -21,6 +21,7 @@ export class Dino extends Sprite {
         //this.walking_counter = 10
 
         document.addEventListener("keydown", this.keydown.bind(this))
+        document.addEventListener("keyup", this.keyup.bind(this))
     }
     //bird flap down coor. = 239,2 top coor 
     //bird flap down coor. = 285,32 bottom coor.
