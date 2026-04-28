@@ -41,6 +41,20 @@ export class Dino extends Sprite {
         }
      } 
 
+     keyup(event) {
+        console.log("key pressed", event)
+        event.preventDefault()
+
+        if (event.key == "ArrowUp") {
+        //set the vertical speed to "jump"
+        if (this.y == settings.floor_y) {
+            this.dy = -settings.jump_dy
+        }
+     } else if (event.key == "ArrowDown") {
+          this.set_state(CROUCHING)
+        }
+     } 
+
 
     set_state(state) {
         this.state = state
