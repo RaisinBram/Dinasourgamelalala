@@ -2,7 +2,7 @@ import {Sprite} from './sprite.js'
 import settings from './settings.js'
 
 const STANDING = "standing"
-const WLAKING = "walking"
+const WALKING = "walking"
 const CROUCHING = "crouching"
 
 export class Dino extends Sprite {
@@ -30,12 +30,16 @@ export class Dino extends Sprite {
         console.log("key pressed", event)
         event.preventDefault()
 
-        //set the vertical speed to "jump"https://classroom.google.com/u/0/h
+        if (event.key == "ArrowUp") {
+        //set the vertical speed to "jump"
         if (this.y == settings.floor_y) {
             this.dy = -settings.jump_dy
         }
+     } else if (event.key == "ArrowDown") {
+          this.set_state(CROUCHING)
+        }
+     } 
 
-    }
 
     set_state(state) {
         this.state = state

@@ -19,6 +19,8 @@ export default class Game {
             "standing": { x: 1338, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
             "walking1": { x: 1514, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
             "walking2": { x: 1602, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
+            "crouching1": { x: 8162, y: 36, w: 118, h: 60, cx: 34, cy: 94 },
+            "crouching2": { x: 1980, y: 36, w: 118, h: 60, cx: 34, cy: 94 },
             "bird1": { x: 260, y: 14, w: 92, h: 68, cx: 28, cy: 20 },
             "bird2": { x: 352, y: 2, w: 92, h: 68, cx: 28, cy: 32 },
             "cacti1": { x: 652, y: 2, w: 50, h: 100, cx: 24, cy: 96 },
