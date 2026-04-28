@@ -74,10 +74,10 @@ export class Dino extends Sprite {
         } else if (this.state == CROUCHING) {
             this.walking_counter -= 1
             if (this.walking_counter == 0) {
-                if (this.current_sprite == "crouching") {
-                    this.current_sprite = "crouching"
+                if (this.current_sprite == "crouching1") {
+                    this.current_sprite = "crouching2"
                 } else {
-                    this.current_sprite = "crouching"
+                    this.current_sprite = "crouching2"
                 }
                 this.set_sprite(this.current_sprite)
                 this.walking_counter = 20
