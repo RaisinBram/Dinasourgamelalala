@@ -1,7 +1,7 @@
 import {Sprite} from './sprite.js'
 import settings from './settings.js'
 
-export class Cacti extends Sprite {
+export class Cactus extends Sprite {
     constructor (game) {
         super(game)
          this.x = 600         //right side of 

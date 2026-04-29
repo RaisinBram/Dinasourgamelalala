@@ -41,6 +41,12 @@ export class Dino extends Sprite {
         }
      } 
 
+     keyup(event) {
+       if (event.key == "ArrowDown") {
+            this.set_state(WALKING)
+        }
+     }
+
 
     set_state(state) {
         this.state = state
@@ -50,7 +56,11 @@ export class Dino extends Sprite {
             this.current_sprite = "walking1"
             this.walking_counter = 10
         }
+        else if (this.state == CROUCHING) {
+            this.current_sprite = "crouching1"
+            this.walking_counter = 10
     }
+}
 
     animate() {
         this.y += this.dy
@@ -76,9 +86,9 @@ export class Dino extends Sprite {
             this.walking_counter -= 1
             if (this.walking_counter == 0) {
                 if (this.current_sprite == "crouching") {
-                    this.current_sprite = "crouching"
+                    this.current_sprite = "crouching1"
                 } else {
-                    this.current_sprite = "crouching"
+                    this.current_sprite = "crouching2"
                 }
                 this.set_sprite(this.current_sprite)
                 this.walking_counter = 20

@@ -1,7 +1,8 @@
 import { Dino } from './Dino.js'
-import { Cacti } from './Cacti.js'
+import { Cactus } from './Cacti.js'
 import { Bird } from './bird.js'
 import settings from './settings.js'
+
 
 const PLAYING = "PLAYING"
 const LOST = "LOST"
@@ -19,8 +20,8 @@ export default class Game {
             "standing": { x: 1338, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
             "walking1": { x: 1514, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
             "walking2": { x: 1602, y: 2, w: 88, h: 94, cx: 38, cy: 94 },
-            "crouching1": { x: 8162, y: 36, w: 118, h: 60, cx: 34, cy: 94 },
-            "crouching2": { x: 1980, y: 36, w: 118, h: 60, cx: 34, cy: 94 },
+            "crouching1": { x: 8162, y: 36, w: 118, h: 60, cx: 34, cy: 60 },
+            "crouching2": { x: 1980, y: 36, w: 118, h: 60, cx: 34, cy: 60 },
             "bird1": { x: 260, y: 14, w: 92, h: 68, cx: 28, cy: 20 },
             "bird2": { x: 352, y: 2, w: 92, h: 68, cx: 28, cy: 32 },
             "cacti1": { x: 652, y: 2, w: 50, h: 100, cx: 24, cy: 96 },
@@ -30,11 +31,22 @@ export default class Game {
         //Create a dino object
         //writing this- gives it object to be in game
         this.dino = new Dino(this)
-        this.cacti = new Cacti(this)
-        this.bird = new Bird(this)
 
+        //Create obstacles\
+        this.obstacles = [ ]
+
+        // create cactus and add it to the obstacle list
+        this.cactus = new Cactus(this)
+        this.obstacles.push(this.cactus)
+
+      // create bird and add it to the obstacle list
+        this.bird = new Bird(this)
+        this.obstacles.push(this.bird)
+        
         //Set the game inital state
         this.state = PLAYING
+        
+        this.score = 0
 
     }
 
@@ -52,14 +64,30 @@ export default class Game {
         this.ctx.moveTo(10, settings.floor_y)
         this.ctx.lineTo(780, settings.floor_y)
         this.ctx.stroke()
+       
+        if (this.state == PLAYING) {
+            this.score += 1
+        }
+
+
+        //Draw the current score
+        this.ctx.font = "30px times" 
+        this.ctx.fillStyle = "blue";
+        var actual_score = Math.round(this.score / 30)
+        this.ctx.fillText(`${actual_score}`, 400, 50);
 
         // Tell the dinosaur object to draw
         this.dino.draw(this.ctx)
-        this.cacti.draw(this.ctx)
+        this.cactus.draw(this.ctx)
         this.bird.draw(this.ctx)
 
+        console.log(this.obstacles)
+        for (const obstacle of this.obstacles) {
+            obstacle.draw(this.ctx)
+        }
+
         if (this.state == PLAYING) {
-            this.cacti.animate()
+            this.cactus.animate()
             this.bird.animate()
             this.dino.animate()
         } else if (this.state == LOST) {
@@ -77,7 +105,7 @@ export default class Game {
             this.state = LOST
         }
 
-        if (this.dino.collides_with(this.cacti)) {
+        if (this.dino.collides_with(this.cactus)) {
             console.log("collide")
             this.state = LOST
         }
