@@ -11,6 +11,8 @@ const settings = {
     bird_speed: 0.75,
     // How fast does the cactus move right-to-left?
     cactus_speed: 0.95,
+
+    cactus_rate: 500
 }
 
 export default settings;

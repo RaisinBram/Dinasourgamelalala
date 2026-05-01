@@ -29,23 +29,21 @@ export default class Game {
         }
 
         //Create a dino object
-        //writing this- gives it object to be in game
+        //writing this gives it object to be in game
         this.dino = new Dino(this)
 
         //Create obstacles\
-        this.obstacles = [ ]
+        this.obstacles = []
+           
+        this.cactus_counter = 10
 
-        // create cactus and add it to the obstacle list
-        this.cactus = new Cactus(this)
-        this.obstacles.push(this.cactus)
+        // create bird and add it to the obstacle list
+       //var bird = new Bird(this)
+       // this.obstacles.push(this.bird)
 
-      // create bird and add it to the obstacle list
-        this.bird = new Bird(this)
-        this.obstacles.push(this.bird)
-        
         //Set the game inital state
         this.state = PLAYING
-        
+
         this.score = 0
 
     }
@@ -57,6 +55,7 @@ export default class Game {
     }
 
     frame() {
+        // CLear entire canvas
         this.ctx.clearRect(0, 0, 800, 600)
 
 
@@ -64,52 +63,56 @@ export default class Game {
         this.ctx.moveTo(10, settings.floor_y)
         this.ctx.lineTo(780, settings.floor_y)
         this.ctx.stroke()
-       
+
         if (this.state == PLAYING) {
             this.score += 1
         }
 
 
         //Draw the current score
-        this.ctx.font = "30px times" 
+        this.ctx.font = "30px times"
         this.ctx.fillStyle = "blue";
         var actual_score = Math.round(this.score / 30)
         this.ctx.fillText(`${actual_score}`, 400, 50);
 
         // Tell the dinosaur object to draw
         this.dino.draw(this.ctx)
-        this.cactus.draw(this.ctx)
-        this.bird.draw(this.ctx)
 
+        // Draw all obstacles in the list
         console.log(this.obstacles)
         for (const obstacle of this.obstacles) {
             obstacle.draw(this.ctx)
         }
 
         if (this.state == PLAYING) {
-            this.cactus.animate()
-            this.bird.animate()
             this.dino.animate()
+            for (const obstacle of this.obstacles) {
+                obstacle.animate(this.ctx)
+
+                if (this.dino.collides_with(obstacle)) {
+              //      this.state = LOST
+                }
+            }
+
+            this.obstacles = this.obstacles.filter(o => o.x > -50)
+
+this.cactus_counter -= 1
+            if (this.cactus_counter == 0) {
+                 var cactus = new Cactus(this)
+                 this.obstacles.push(cactus)
+                 this.cactus_counter = settings.cactus_rate
+                
+            }
+           
         } else if (this.state == LOST) {
             this.ctx.font = "60px times"
             this.ctx.fillStyle = "black";
             this.ctx.textAlign = "center";
             this.ctx.textBaseline = "middle"
             this.ctx.fillText("YOU LOST!",
-                this.canvas.width/2, this.canvas.height/2);
+                this.canvas.width / 2, this.canvas.height / 2);
 
         }
-
-        if (this.dino.collides_with(this.bird)) {
-            console.log("collides with bird")
-            this.state = LOST
-        }
-
-        if (this.dino.collides_with(this.cactus)) {
-            console.log("collide")
-            this.state = LOST
-        }
-
 
         // Request that the browser 
         window.requestAnimationFrame(this.frame.bind(this))
