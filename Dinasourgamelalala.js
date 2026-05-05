@@ -100,7 +100,7 @@ this.cactus_counter -= 1
             if (this.cactus_counter == 0) {
                  var cactus = new Cactus(this)
                  this.obstacles.push(cactus)
-                 this.cactus_counter = settings.cactus_rate
+                 this.cactus_counter = 250 + (Math.random() * 100)
                 
             }
            

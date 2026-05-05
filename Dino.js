@@ -32,28 +32,28 @@ export class Dino extends Sprite {
         event.preventDefault()
 
         if (event.key == "ArrowUp") {
-        //set the vertical speed to "jump"
-        if (this.y == settings.floor_y) {
-            this.dy = -settings.jump_dy
+            //set the vertical speed to "jump"
+            if (this.y == settings.floor_y) {
+                this.dy = -settings.jump_dy
+            }
+        } else if (event.key == "ArrowDown") {
+            this.set_state(CROUCHING)
         }
-     } else if (event.key == "ArrowDown") {
-          this.set_state(CROUCHING)
-        }
-     } 
+    }
 
-     keyup(event) {
+    keyup(event) {
         console.log("key pressed", event)
         event.preventDefault()
 
         if (event.key == "ArrowUp") {
-        //set the vertical speed to "jump"
-        if (this.y == settings.floor_y) {
-            this.dy = -settings.jump_dy
+            //set the vertical speed to "jump"
+            if (this.y == settings.floor_y) {
+                this.dy = -settings.jump_dy
+            }
+        } else if (event.key == "ArrowDown") {
+            this.set_state(WALKING)
         }
-     } else if (event.key == "ArrowDown") {
-          this.set_state(CROUCHING)
-        }
-     } 
+    }
 
 
     set_state(state) {
@@ -67,8 +67,8 @@ export class Dino extends Sprite {
         else if (this.state == CROUCHING) {
             this.current_sprite = "crouching1"
             this.walking_counter = 10
+        }
     }
-}
 
     animate() {
         this.y += this.dy
