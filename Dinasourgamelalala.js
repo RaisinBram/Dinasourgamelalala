@@ -34,12 +34,12 @@ export default class Game {
 
         //Create obstacles\
         this.obstacles = []
-           
+
         this.cactus_counter = 10
 
         // create bird and add it to the obstacle list
-       //var bird = new Bird(this)
-       // this.obstacles.push(this.bird)
+        //var bird = new Bird(this)
+        // this.obstacles.push(this.bird)
 
         //Set the game inital state
         this.state = PLAYING
@@ -90,20 +90,30 @@ export default class Game {
                 obstacle.animate(this.ctx)
 
                 if (this.dino.collides_with(obstacle)) {
-              //      this.state = LOST
+                    this.state = LOST
                 }
             }
 
             this.obstacles = this.obstacles.filter(o => o.x > -50)
 
-this.cactus_counter -= 1
-            if (this.cactus_counter == 0) {
-                 var cactus = new Cactus(this)
-                 this.obstacles.push(cactus)
-                 this.cactus_counter = 250 + (Math.random() * 100)
-                
+            this.cactus_counter -= 1
+
+            if (this.cactus_counter <= 0) {
+                var cactus = new Cactus(this)
+                this.obstacles.push(cactus)
+                this.cactus_counter = 250 + (Math.random() * 100)
+
             }
-           
+
+            this.bird_counter -= 1
+
+            if (this.bird_counter <= 0) {
+                var bird = new Bird(this)
+                this.obstacles.push(bird)
+                this.bird_counter = 250 + (Math.random() * 100)
+
+            }
+
         } else if (this.state == LOST) {
             this.ctx.font = "60px times"
             this.ctx.fillStyle = "black";
