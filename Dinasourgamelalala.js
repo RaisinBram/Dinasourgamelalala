@@ -36,6 +36,7 @@ export default class Game {
         this.obstacles = []
 
         this.cactus_counter = 10
+        this.bird_counter = 350
 
         // create bird and add it to the obstacle list
         //var bird = new Bird(this)
@@ -101,7 +102,8 @@ export default class Game {
             if (this.cactus_counter <= 0) {
                 var cactus = new Cactus(this)
                 this.obstacles.push(cactus)
-                this.cactus_counter = 250 + (Math.random() * 100)
+                this.cactus_counter = settings.cactus_frequency + 
+                (Math.random() * settings.cactus_randomness)
 
             }
 
@@ -110,7 +112,8 @@ export default class Game {
             if (this.bird_counter <= 0) {
                 var bird = new Bird(this)
                 this.obstacles.push(bird)
-                this.bird_counter = 250 + (Math.random() * 100)
+                this.bird_counter = settings.bird_frequency + 
+                (Math.random() * settings.bird_randomness)
 
             }
 
